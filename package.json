@@ -1,0 +1,18 @@
+{
+  "name": "portfolio_website_new",
+  "version": "1.0.0",
+  "description": "Portfolio Website",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive"
+  },
+  "author": "Tanisha Gupta",
+  "license": "MIT",
+  "dependencies": {
+    "gh-pages": "^3.2.3",
+    "node-sass": "^6.0.1"
+  },
+  "devDependencies": {
+    "url-loader": "^4.1.1"
+  }
+}

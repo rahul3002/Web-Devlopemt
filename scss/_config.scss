@@ -1,0 +1,61 @@
+$primary-color: #ece9db;
+$secondary-color: #e85a4f;
+$text-color: #123c69;
+$show-home-img: true;
+$home_img: url("../img/bg.jpg") no-repeat;
+$background-opacity: 0.7;
+
+@mixin background {
+  @if $show-home-img {
+    &#bg-img {
+      background: $home_img;
+      background-attachment: fixed;
+      z-index: 2;
+      background-size: cover;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: rgba($primary-color, $background-opacity);
+      }
+    }
+  }
+}
+//Set text Color
+@function set-text-color($color) {
+  @if (lightness($color) <40) {
+    @return #ffff;
+  } @else {
+    @return $text-color;
+  }
+}
+@mixin easeOut {
+  transition: all 0.5s ease-out;
+}
+
+// Media Queries
+@mixin mediaSm {
+  @media screen and (max-width: 500px) {
+    @content;
+  }
+}
+@mixin mediaMd {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+@mixin mediaLg {
+  @media screen and (min-width: 769px) and (max-width: 1170px) {
+    @content;
+  }
+}
+
+@mixin mediaXL {
+  @media screen and (min-width: 1171px) {
+    @content;
+  }
+}

@@ -1,0 +1,207 @@
+@import "config";
+@import "menu";
+
+* {
+  box-sizing: border-box;
+}
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  color: $secondary-color;
+  background: $primary-color;
+  @include background();
+}
+
+// Headings
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400;
+  //This exactly means h1.lg-heading
+  &.lg-heading {
+    font-size: 6rem;
+  }
+  &.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background: #D8C3A5(darken($primary-color, 2), 0.5);
+  }
+}
+
+a {
+  color: $secondary-color;
+  text-decoration: none;
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+.text-secondary {
+  color: set-text-color($primary-color);
+}
+
+main {
+  padding: 4rem;
+  // height: 100%;
+  min-height: calc(100vh-60px);
+
+  .socials {
+    margin-top: 1rem;
+
+    a {
+      padding: 0.4rem;
+
+      &:hover {
+        color: set-text-color($primary-color);
+        @include easeOut();
+      }
+    }
+  }
+
+  //Home
+  &#home {
+    /* cursor */
+    #rtext {
+      border-right: 0.2rem solid lighten($text-color, 5);
+    }
+    overflow: hidden;
+    h1 {
+      margin-top: 20vh;
+      font-size: 5rem;
+      font-weight: 450;
+    }
+    h2 {
+      padding: 0 1rem;
+      font-size: 2.5rem;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5rem;
+  }
+}
+
+//About Page
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:
+    "bioimage bio bio"
+    "job1 job2 job3";
+  grid-template-columns: repeat(3, 1fr);
+  
+  .bio-image {
+    grid-area: bioimage;
+    margin: auto;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: solid set-text-color($primary-color) 4px;
+  }
+  .bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+    text-align: left;
+  }
+  .job {
+    background: lighten($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: set-text-color($primary-color) 4px solid;
+  }
+  .job-1 {
+    grid-area: job1;
+  }
+  .job-2 {
+    grid-area: job2;
+  }
+  .job-3 {
+    grid-area: job3;
+  }
+}
+
+// Work/Projects and box class
+.projects,
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.7rem;
+
+  h2 {
+    color: $text-color;
+  }
+  img {
+    width: 100%;
+    border: 3px $text-color solid;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+
+    &:hover {
+      opacity: 0.5;
+      border-color: $secondary-color;
+
+      @include easeOut;
+    }
+  }
+}
+.item {
+  text-align: center;
+}
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid $text-color;
+  margin-bottom: 0.3rem;
+  box-sizing: border-box;
+  border-radius: 25px;
+  color: white;
+}
+
+.btn-dark {
+  @extend.btn;
+  background: $text-color;
+
+  &:hover {
+    background-color: lighten($text-color, 10);
+    color: rgb(15, 8, 8);
+  }
+}
+
+.btn-light {
+  @extend.btn;
+  background: $secondary-color;
+  &:hover {
+    background-color: lighten($secondary-color, 10);
+    color: rgb(15, 8, 8);
+  }
+}
+
+//Blog
+.box {
+  a {
+    color: white;
+  }
+}
+.container {
+  grid-gap: 1rem;
+}
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: darken($primary-color, 20);
+  color: set-text-color($primary-color);
+  height: 60px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+@import "mediaquery";
